@@ -1,0 +1,16 @@
+spring:
+
+
+
+
+
+
+
+
+
+   jpa.hibernate.ddl-auto: update
+   datasource:
+       url: jdbc:mysql://localhost:3306/rsweb
+       username: root
+       password: ravi
+       driver-class-name : com.mysql.jdbc.Driver
