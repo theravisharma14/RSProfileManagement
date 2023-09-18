@@ -1,5 +1,7 @@
 package com.rs.profileManagement.entity;
 
+import java.util.Date;
+
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -34,11 +36,11 @@ public class LoginEntity {
 	
 	@Column (name="CREATE_UID")
 	@CreationTimestamp
-	private String createUid;
+	private Date createDATE;
 	
 	@Column(name="UPDATE_UID")
 	@UpdateTimestamp
-	private String updateUid;
+	private Date updateDATE;
 
 	public String getUserName() {
 		return userName;
@@ -80,20 +82,20 @@ public class LoginEntity {
 		this.userType = userType;
 	}
 
-	public String getCreateUid() {
-		return createUid;
+	public Date getCreateDATE() {
+		return createDATE;
 	}
 
-	public void setCreateUid(String createUid) {
-		this.createUid = createUid;
+	public Date getUpdateDATE() {
+		return updateDATE;
 	}
 
-	public String getUpdateUid() {
-		return updateUid;
+	public void setCreateDATE(Date createDATE) {
+		this.createDATE = createDATE;
 	}
 
-	public void setUpdateUid(String updateUid) {
-		this.updateUid = updateUid;
+	public void setUpdateDATE(Date updateDATE) {
+		this.updateDATE = updateDATE;
 	}
 	
 }

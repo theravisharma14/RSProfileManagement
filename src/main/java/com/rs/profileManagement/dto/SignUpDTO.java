@@ -1,5 +1,7 @@
 package com.rs.profileManagement.dto;
 
+import java.util.Date;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class SignUpDTO {
@@ -11,8 +13,8 @@ public class SignUpDTO {
 	private String userEmail;
 	private Long  userMobile;
 	private String userType;
-	private String createUid;
-	private String updateUid;
+	private Date createDate;
+	private Date updateDate;
 	
 	public Long getProfileID() {
 		return profileID;
@@ -50,18 +52,4 @@ public class SignUpDTO {
 	public void setUserType(String userType) {
 		this.userType = userType;
 	}
-	public String getCreateUid() {
-		return createUid;
-	}
-	public void setCreateUid(String createUid) {
-		this.createUid = createUid;
-	}
-	public String getUpdateUid() {
-		return updateUid;
-	}
-	public void setUpdateUid(String updateUid) {
-		this.updateUid = updateUid;
-	}
-
-
 }
