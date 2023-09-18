@@ -21,12 +21,12 @@ public class ProfileManagementServiceImpl implements ProfileManagementService {
 	
 	@Override
 	public SignUpDTO signUp(SignUpDTO signUpDTO) {
-		SignUpDTO login=new SignUpDTO();
-		login.setUserName(signUpDTO.getUserName());
-		login.setUserPass(signUpDTO.getUserPass());
-		login.setUserEmail(signUpDTO.getUserEmail());
-		login.setUserMobile(signUpDTO.getUserMobile());
-		LoginEntity mapEntityToDto = loginMapper.mapEntityToDto(login);
+		SignUpDTO signup=new SignUpDTO();
+		signup.setUserName(signUpDTO.getUserName());
+		signup.setUserPass(signUpDTO.getUserPass());
+		signup.setUserEmail(signUpDTO.getUserEmail());
+		signup.setUserMobile(signUpDTO.getUserMobile());
+		LoginEntity mapEntityToDto = loginMapper.mapEntityToDto(signup);
 		return loginRepository.saveLoginData(mapEntityToDto);
 	}
 
@@ -34,8 +34,13 @@ public class ProfileManagementServiceImpl implements ProfileManagementService {
 	@Override
 	public LoginDTO signIn(LoginDTO loginDto) {
 		
-		
-		
+		LoginDTO findByEmail = loginRepository.findByEmail(loginDto.getUserEmail());
+		if(findByEmail != null){
+			int compareTo = loginDto.getUserEmail().compareTo(findByEmail.getUserEmail());
+			int compareTo2 = loginDto.getUserPass().compareTo(findByEmail.getUserPass());
+			
+		}
 		return loginDto;
 	}
+
 }
