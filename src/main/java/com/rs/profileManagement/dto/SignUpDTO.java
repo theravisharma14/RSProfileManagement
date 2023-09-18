@@ -52,4 +52,11 @@ public class SignUpDTO {
 	public void setUserType(String userType) {
 		this.userType = userType;
 	}
+	@Override
+	public String toString() {
+		return "SignUpDTO [profileID=" + profileID + ", userName=" + userName + ", userPass=" + userPass
+				+ ", userEmail=" + userEmail + ", userMobile=" + userMobile + ", userType=" + userType + ", createDate="
+				+ createDate + ", updateDate=" + updateDate + "]";
+	}
+	
 }

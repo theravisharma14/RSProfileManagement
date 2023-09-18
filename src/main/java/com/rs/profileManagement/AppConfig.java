@@ -15,7 +15,6 @@ import com.zaxxer.hikari.HikariDataSource;
 @EnableAsync
 public class AppConfig {
 	
-	
 	@Bean
 	public DataSource getDataSource(DBProperty dbproperty) {
 		HikariDataSource dataSourceBuilder= new HikariDataSource();
