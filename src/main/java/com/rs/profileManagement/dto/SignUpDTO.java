@@ -2,7 +2,7 @@ package com.rs.profileManagement.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-public class LoginDTO {
+public class SignUpDTO {
 
 	@JsonIgnore
 	private Long profileID;
