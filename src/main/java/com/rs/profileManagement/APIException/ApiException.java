@@ -50,7 +50,7 @@ public class ApiException extends Exception {
 	 }
 	 
 	 public static final ApiException DATA_EXSIST(String message, HttpStatus status) {
-		 return new ApiException(message, status.BAD_REQUEST);
+		 return new ApiException(message, status);
 	 }
 
 }

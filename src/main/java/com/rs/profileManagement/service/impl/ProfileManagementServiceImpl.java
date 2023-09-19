@@ -31,7 +31,7 @@ public class ProfileManagementServiceImpl implements ProfileManagementService {
 		LoginEntity loginEntity=null;
 		LoginEntity byUserEmail = loginRepository.findUserEmailByUserEmail(signUpDTO.getUserEmail());
 		if(byUserEmail.getUserEmail().equals(signUpDTO.getUserEmail())) {
-			 throw ApiException.DATA_EXSIST("Email Already Exist....."+ signUpDTO.getUserEmail());
+			 throw ApiException.DATA_EXSIST("Email "+signUpDTO.getUserEmail()+" Already Exist.....",HttpStatus.CONFLICT);
 		}else {
 			loginEntity=new LoginEntity();
 			loginEntity.setUserName(signUpDTO.getUserName());
@@ -45,13 +45,12 @@ public class ProfileManagementServiceImpl implements ProfileManagementService {
 
 	@Override
 	public ResponseEntity<?> signIn(LoginDTO loginDto) throws ApiException  {
-		
-		
+
 		LoginEntity findByEmail = loginRepository.findByUserEmail(loginDto.getUserEmail());
 		if(findByEmail.getUserEmail().equals(loginDto.getUserEmail()) && !findByEmail.getUserPass().equals(loginDto.getUserPass())) {
-			 throw ApiException.DATA_EXSIST("Email or Password Mismatch..... ",HttpStatus.BAD_REQUEST);
+			throw ApiException.DATA_EXSIST("Email or Password Mismatch..... ",HttpStatus.BAD_REQUEST);
 		}
-		
-	 return new ResponseEntity<LoginEntity>(findByEmail,HttpStatus.OK); 
+
+		return new ResponseEntity<LoginEntity>(findByEmail,HttpStatus.OK); 
 	}
 }
