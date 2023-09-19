@@ -16,7 +16,7 @@ public class ControllerAdvisor extends ResponseEntityExceptionHandler {
 		ErrorResponse body = new ErrorResponse();
 		body.setTimestamp(LocalDateTime.now().toString());
 		body.setMessage(ex.getErrorMessage());
-		body.setError(ex.getStatus().value());
+		body.setStatusCode(ex.getStatus().value());
 		body.setStatus(ex.getStatus());
 		return new ResponseEntity<>(body, ex.getStatus());
 	}

@@ -6,7 +6,7 @@ public class ErrorResponse {
 	
 	private String timestamp;
     private HttpStatus status;
-    private int error;
+    private int statusCode;
     private String message;
     
 	public String getTimestamp() {
@@ -15,8 +15,8 @@ public class ErrorResponse {
 	public HttpStatus getStatus() {
 		return status;
 	}
-	public int getError() {
-		return error;
+	public int getStatusCode() {
+		return statusCode;
 	}
 	public String getMessage() {
 		return message;
@@ -27,8 +27,8 @@ public class ErrorResponse {
 	public void setStatus(HttpStatus status) {
 		this.status = status;
 	}
-	public void setError(int error) {
-		this.error = error;
+	public void setStatusCode(int statusCode) {
+		this.statusCode = statusCode;
 	}
 	public void setMessage(String message) {
 		this.message = message;
