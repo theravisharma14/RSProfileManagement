@@ -9,10 +9,11 @@ import com.rs.profileManagement.entity.LoginEntity;
 
 public interface LoginRepository extends JpaRepository<LoginEntity, Long>{
 
-	@Query(nativeQuery=true,name= "SELECT * FROM rs_profile_management where user_email=1?")
-	public SignUpDTO getByUserEmail(@Param("userEmail") String userEmail);
+	@Query(nativeQuery=true,value = "SELECT * FROM rs_profile_management  rpm where rpm.user_email=?1")
+	public LoginEntity findUserEmailByUserEmail(String userEmail);
 
-//	@Query(nativeQuery=true,name= "SELECT user_email FROM rs_profile_management where user_email=?1")
-//	public SignUpDTO findByEmail(String userEmail);
+	@Query(nativeQuery=true,value = "SELECT * FROM rs_profile_management  rpm where rpm.user_email=?1")
+	public LoginEntity findByUserEmail(String userEmail);
+
 	
 }

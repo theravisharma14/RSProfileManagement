@@ -10,6 +10,6 @@ public interface ProfileManagementService {
 	
 	public ResponseEntity<SignUpDTO> signUp(SignUpDTO signUpDTO) throws ApiException ;
 	
-	public LoginDTO signIn(LoginDTO loginDto);
+	public ResponseEntity<?> signIn(LoginDTO loginDto) throws ApiException;
 
 }

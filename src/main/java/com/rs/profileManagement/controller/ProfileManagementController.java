@@ -28,9 +28,9 @@ public class ProfileManagementController {
 	}
 	
 	@GetMapping("/signIn")
-	public LoginDTO  signIn(@RequestBody LoginDTO loginDto ){
-		LoginDTO login= profileManagementService.signIn(loginDto);
-		return login ;
+	public ResponseEntity<?>  signIn(@RequestBody LoginDTO loginDto ) throws ApiException{
+		ResponseEntity<?> signIn = profileManagementService.signIn(loginDto);
+		return signIn ;
 				
 	}
 

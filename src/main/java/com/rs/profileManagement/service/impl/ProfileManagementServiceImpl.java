@@ -1,7 +1,6 @@
 package com.rs.profileManagement.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -13,15 +12,12 @@ import com.rs.profileManagement.entity.LoginEntity;
 import com.rs.profileManagement.repository.LoginRepository;
 import com.rs.profileManagement.service.ProfileManagementService;
 
-import ch.qos.logback.classic.Logger;
 
 @Service
 public class ProfileManagementServiceImpl implements ProfileManagementService {
 	
 	@Autowired
 	private LoginRepository loginRepository;
-//	@Autowired
-//	private LoginMapper loginMapper;
 	
 	
 	@Override
@@ -31,11 +27,11 @@ public class ProfileManagementServiceImpl implements ProfileManagementService {
 		return  new ResponseEntity<SignUpDTO>(signUpDTO,HttpStatus.CREATED);  
 	}
 
-	public  LoginEntity mapEntityToDto(SignUpDTO signUpDTO) throws ApiException  {
+	public LoginEntity mapEntityToDto(SignUpDTO signUpDTO) throws ApiException  {
 		LoginEntity loginEntity=null;
-		 SignUpDTO byUserEmail = loginRepository.getByUserEmail(signUpDTO.getUserEmail());
+		LoginEntity byUserEmail = loginRepository.findUserEmailByUserEmail(signUpDTO.getUserEmail());
 		if(byUserEmail.getUserEmail().equals(signUpDTO.getUserEmail())) {
-			 throw ApiException.DATA_EXSIST("Email Already Exist.....");
+			 throw ApiException.DATA_EXSIST("Email Already Exist....."+ signUpDTO.getUserEmail());
 		}else {
 			loginEntity=new LoginEntity();
 			loginEntity.setUserName(signUpDTO.getUserName());
@@ -48,15 +44,14 @@ public class ProfileManagementServiceImpl implements ProfileManagementService {
 	}
 
 	@Override
-	public LoginDTO signIn(LoginDTO loginDto) {
+	public ResponseEntity<?> signIn(LoginDTO loginDto) throws ApiException  {
 		
-//		LoginDTO findByEmail = loginRepository.findByEmail(loginDto.getUserEmail());
-//		if(findByEmail != null){
-//			int compareTo = loginDto.getUserEmail().compareTo(findByEmail.getUserEmail());
-//			int compareTo2 = loginDto.getUserPass().compareTo(findByEmail.getUserPass());
-//			
-//		}
-		return loginDto;
+		
+		LoginEntity findByEmail = loginRepository.findByUserEmail(loginDto.getUserEmail());
+		if(findByEmail.getUserEmail().equals(loginDto.getUserEmail()) && !findByEmail.getUserPass().equals(loginDto.getUserPass())) {
+			 throw ApiException.DATA_EXSIST("Email or Password Mismatch..... ",HttpStatus.BAD_REQUEST);
+		}
+		
+	 return new ResponseEntity<LoginEntity>(findByEmail,HttpStatus.OK); 
 	}
-
 }
