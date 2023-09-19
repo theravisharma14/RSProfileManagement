@@ -68,6 +68,8 @@ public class ProfileManagementServiceImpl implements ProfileManagementService {
 					.compact();
 			LoginResponseDTO LoginResponseDTO=new LoginResponseDTO();
 			LoginResponseDTO.setUserAccessToken(jwtToken);
+			
+			
 			return new ResponseEntity<>(LoginResponseDTO,HttpStatus.OK); 
 		}
 	}
