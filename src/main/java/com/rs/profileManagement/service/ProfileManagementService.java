@@ -2,7 +2,7 @@ package com.rs.profileManagement.service;
 
 import org.springframework.http.ResponseEntity;
 
-import com.rs.profileManagement.APIException.ApiException;
+import com.rs.profileManagement.exception.ApiException;
 import com.rs.profileManagement.dto.LoginDTO;
 import com.rs.profileManagement.dto.SignUpDTO;
 

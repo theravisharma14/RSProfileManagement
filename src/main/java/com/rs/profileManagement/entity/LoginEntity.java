@@ -21,19 +21,19 @@ public class LoginEntity {
 	@Column (name="PROFILE_ID", unique=true, nullable=false)
 	private Long profileID;
 	
-	@Column (name="USER_NAME")
+	@Column (name="USER_NAME",nullable=false)
 	private String userName;
 	
-	@Column (name="USER_PASSWORD")
+	@Column (name="USER_PASSWORD", nullable=false)
 	private String userPass;
 	
-	@Column (name="USER_EMAIL")
+	@Column (name="USER_EMAIL" , unique=true, nullable=false)
 	private String userEmail;
 	
-	@Column (name="USER_MOBILE")
+	@Column (name="USER_MOBILE",nullable=false)
 	private Long  userMobile;
 	
-	@Column (name="USER_TYPE", unique=true, nullable=false)
+	@Column (name="USER_TYPE",nullable=false)
 	private String userType;
 	
 	@Column (name="CREATE_UID")

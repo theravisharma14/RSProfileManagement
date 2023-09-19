@@ -1,4 +1,4 @@
-package com.rs.profileManagement.APIException;
+package com.rs.profileManagement.exception;
 
 import org.springframework.http.HttpStatus;
 

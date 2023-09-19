@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.rs.profileManagement.APIException.ApiException;
+import com.rs.profileManagement.exception.ApiException;
 import com.rs.profileManagement.dto.LoginDTO;
 import com.rs.profileManagement.dto.SignUpDTO;
 import com.rs.profileManagement.service.ProfileManagementService;

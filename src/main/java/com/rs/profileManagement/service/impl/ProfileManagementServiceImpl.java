@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.rs.profileManagement.APIException.ApiException;
+import com.rs.profileManagement.exception.ApiException;
 import com.rs.profileManagement.dto.LoginDTO;
 import com.rs.profileManagement.dto.SignUpDTO;
 import com.rs.profileManagement.entity.LoginEntity;
@@ -30,7 +30,7 @@ public class ProfileManagementServiceImpl implements ProfileManagementService {
 	public LoginEntity mapEntityToDto(SignUpDTO signUpDTO) throws ApiException  {
 		LoginEntity loginEntity=null;
 		LoginEntity byUserEmail = loginRepository.findUserEmailByUserEmail(signUpDTO.getUserEmail());
-		if(byUserEmail.getUserEmail().equals(signUpDTO.getUserEmail())) {
+		if(byUserEmail!=null && byUserEmail.getUserEmail().equals(signUpDTO.getUserEmail())) {
 			 throw ApiException.DATA_EXSIST("Email "+signUpDTO.getUserEmail()+" Already Exist.....",HttpStatus.CONFLICT);
 		}else {
 			loginEntity=new LoginEntity();
